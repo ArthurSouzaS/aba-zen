@@ -1,0 +1,26 @@
+{
+  "name": "aba-zen",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Aba Zen — nova aba minimalista com foco, bloqueio de distrações e estatísticas locais.",
+  "author": "Arthur Souza Soares",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "dev": "vite build --watch --mode development",
+    "build": "vite build",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "check": "npm run typecheck && npm run test && npm run build",
+    "zip": "npm run build && node scripts/zip.mjs",
+    "icons": "node scripts/gerar-icones.mjs"
+  },
+  "devDependencies": {
+    "@types/chrome": "^0.3.7",
+    "@types/node": "^22.10.0",
+    "typescript": "~6.0.3",
+    "vite": "^8.3.5",
+    "vitest": "^5.1.0"
+  }
+}

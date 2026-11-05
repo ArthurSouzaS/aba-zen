@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Opções — Aba Zen</title>
+    <link rel="icon" href="/icons/icon-32.png" />
+    <link rel="stylesheet" href="../styles/theme.css" />
+    <link rel="stylesheet" href="./options.css" />
+  </head>
+  <body>
+    <main class="page">
+      <header class="page-head">
+        <img src="/icons/icon-48.png" width="40" height="40" alt="" />
+        <div>
+          <h1>Aba Zen</h1>
+          <p class="muted">Opções da extensão. Tudo é salvo apenas neste navegador.</p>
+        </div>
+      </header>
+
+      <section class="card" aria-labelledby="s-geral">
+        <h2 id="s-geral">Geral</h2>
+        <div class="field">
+          <label for="name">Seu nome</label>
+          <input id="name" class="input" maxlength="40" placeholder="Usado na saudação da nova aba" />
+        </div>
+        <div class="field">
+          <label for="focus-minutes">Duração padrão do foco (minutos)</label>
+          <input id="focus-minutes" class="input narrow" type="number" min="1" max="180" step="1" />
+        </div>
+        <label class="switch">
+          <input id="show-quote" type="checkbox" />
+          <span>Mostrar frase motivacional na nova aba</span>
+        </label>
+      </section>
+
+      <section class="card" aria-labelledby="s-bloqueio">
+        <h2 id="s-bloqueio">Sites bloqueados durante o foco</h2>
+        <p class="muted">
+          Um site por linha. Subdomínios também são bloqueados: <code>youtube.com</code> inclui
+          <code>m.youtube.com</code>. O bloqueio vale só enquanto o timer está rodando (pausado = liberado).
+        </p>
+        <label class="sr-only" for="blocklist">Lista de sites</label>
+        <textarea id="blocklist" class="input" rows="8" spellcheck="false"></textarea>
+        <p id="blocklist-msg" class="hint" role="status"></p>
+        <div class="row">
+          <button id="save-blocklist" class="btn btn-primary" type="button">Salvar lista</button>
+          <button id="restore-blocklist" class="btn btn-ghost" type="button">Restaurar padrão</button>
+        </div>
+      </section>
+
+      <section class="card" aria-labelledby="s-stats">
+        <div class="row between">
+          <h2 id="s-stats">Tempo por site</h2>
+          <div class="segmented" role="group" aria-label="Período">
+            <button type="button" data-days="1" aria-pressed="true">Hoje</button>
+            <button type="button" data-days="7">7 dias</button>
+            <button type="button" data-days="30">30 dias</button>
+          </div>
+        </div>
+        <div class="totals">
+          <div><span id="total-time" class="big">0 min</span><span class="muted">navegando</span></div>
+          <div><span id="total-focus" class="big">0 min</span><span class="muted">em foco concluído</span></div>
+        </div>
+        <ul id="stats-list" class="site-list"></ul>
+        <hr />
+        <label class="switch">
+          <input id="tracking" type="checkbox" />
+          <span>Registrar tempo por site</span>
+        </label>
+        <p class="muted small">
+          Conta apenas a aba ativa da janela em foco, e para quando você fica 1 minuto sem usar o
+          computador. Os dados ficam no <code>chrome.storage.local</code> por 30 dias e
+          <strong>nunca são enviados para fora</strong>.
+        </p>
+        <button id="clear-stats" class="btn btn-danger" type="button">Apagar estatísticas</button>
+      </section>
+
+      <footer class="foot muted small">
+        Aba Zen <span id="version"></span> · feito por Arthur Souza Soares
+      </footer>
+    </main>
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+    <script type="module" src="./main.ts"></script>
+  </body>
+</html>

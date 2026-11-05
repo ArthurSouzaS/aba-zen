@@ -1,0 +1,55 @@
+body {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+}
+.blocked {
+  width: min(560px, 100% - 32px);
+  padding: 32px 0;
+  text-align: center;
+}
+.breath {
+  width: 96px;
+  height: 96px;
+  margin: 0 auto 28px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(52, 211, 153, 0.55), rgba(52, 211, 153, 0.05) 70%);
+  animation: breathe 8s ease-in-out infinite;
+}
+@keyframes breathe {
+  0%,
+  100% {
+    transform: scale(0.7);
+    opacity: 0.6;
+  }
+  50% {
+    transform: scale(1.15);
+    opacity: 1;
+  }
+}
+h1 {
+  margin: 0;
+  font-size: 44px;
+  font-weight: 300;
+}
+.lead {
+  font-size: 18px;
+}
+.lead strong {
+  color: var(--accent);
+  overflow-wrap: anywhere;
+}
+.remaining {
+  font-family: var(--mono);
+  font-size: 15px;
+  color: var(--muted);
+}
+.quote {
+  margin: 28px 0;
+  font-style: italic;
+}
+.actions {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}

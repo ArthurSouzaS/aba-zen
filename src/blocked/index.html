@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Respire — Aba Zen</title>
+    <link rel="icon" href="/icons/icon-32.png" />
+    <link rel="stylesheet" href="../styles/theme.css" />
+    <link rel="stylesheet" href="./blocked.css" />
+  </head>
+  <body>
+    <main class="blocked">
+      <div class="breath" aria-hidden="true"></div>
+      <h1>Respire.</h1>
+      <p class="lead"><strong id="site">Este site</strong> <span id="lead">está bloqueado durante a sua sessão de foco.</span></p>
+      <p id="remaining" class="remaining"></p>
+      <p id="quote" class="quote muted"></p>
+      <div class="actions">
+        <a id="back" class="btn btn-primary" href="../newtab/index.html">Voltar ao foco</a>
+        <a id="continue" class="btn" href="#" hidden>Ir para o site</a>
+      </div>
+    </main>
+    <script type="module" src="./main.ts"></script>
+  </body>
+</html>

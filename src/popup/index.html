@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Aba Zen</title>
+    <link rel="stylesheet" href="../styles/theme.css" />
+    <link rel="stylesheet" href="./popup.css" />
+  </head>
+  <body>
+    <main class="popup" id="popup" data-status="idle">
+      <header class="top">
+        <span class="brand"><img src="/icons/icon-32.png" width="18" height="18" alt="" /> Aba Zen</span>
+        <a id="open-options" class="btn btn-ghost btn-icon" href="#" title="Opções" aria-label="Opções">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/><line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/><line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/><line x1="1" y1="14" x2="7" y2="14"/><line x1="9" y1="8" x2="15" y2="8"/><line x1="17" y1="16" x2="23" y2="16"/></svg>
+        </a>
+      </header>
+
+      <section class="timer" aria-live="polite">
+        <svg class="ring" viewBox="0 0 120 120" aria-hidden="true">
+          <circle class="ring-bg" cx="60" cy="60" r="52" />
+          <circle id="ring" class="ring-fg" cx="60" cy="60" r="52" />
+        </svg>
+        <div class="timer-text">
+          <span id="time" class="clock">25:00</span>
+          <span id="status" class="status muted">Pronto</span>
+        </div>
+      </section>
+
+      <fieldset id="durations" class="durations">
+        <legend class="sr-only">Duração da sessão</legend>
+        <button type="button" class="chip" data-min="15">15</button>
+        <button type="button" class="chip" data-min="25">25</button>
+        <button type="button" class="chip" data-min="50">50</button>
+        <label class="chip custom">
+          <span class="sr-only">Minutos personalizados</span>
+          <input id="custom-min" placeholder="—" type="number" min="1" max="180" step="1" inputmode="numeric" />
+          <span aria-hidden="true">min</span>
+        </label>
+      </fieldset>
+
+      <div class="actions">
+        <button id="main" class="btn btn-primary" type="button">Iniciar foco</button>
+        <button id="stop" class="btn" type="button" hidden>Encerrar</button>
+      </div>
+
+      <p id="blocked-info" class="muted small center"></p>
+
+      <section class="today">
+        <h2 class="eyebrow">Hoje</h2>
+        <ul id="sites" class="site-list"></ul>
+      </section>
+    </main>
+    <script type="module" src="./main.ts"></script>
+  </body>
+</html>

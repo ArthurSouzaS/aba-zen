@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Nova aba</title>
+    <link rel="icon" href="/icons/icon-32.png" />
+    <link rel="stylesheet" href="../styles/theme.css" />
+    <link rel="stylesheet" href="./newtab.css" />
+  </head>
+  <body>
+    <a class="settings-link btn btn-ghost btn-icon" href="../options/index.html" title="Opções" aria-label="Opções">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+    </a>
+
+    <main class="layout">
+      <header class="hero">
+        <p id="date" class="date muted"></p>
+        <h1 id="clock" class="clock" aria-live="off">--:--</h1>
+        <p id="greeting" class="greeting"></p>
+      </header>
+
+      <section class="focus card" aria-labelledby="focus-title">
+        <h2 id="focus-title" class="eyebrow">Sessão de foco</h2>
+        <div class="focus-body">
+          <div>
+            <p id="focus-time" class="focus-time">25:00</p>
+            <p id="focus-status" class="muted focus-status">Pronto para começar</p>
+          </div>
+          <div class="focus-actions">
+            <button id="focus-main" class="btn btn-primary" type="button">Iniciar foco</button>
+            <button id="focus-stop" class="btn btn-ghost" type="button" hidden>Encerrar</button>
+          </div>
+        </div>
+        <div class="progress" aria-hidden="true"><span id="focus-progress"></span></div>
+        <p id="focus-summary" class="muted small"></p>
+      </section>
+
+      <section class="tasks card" aria-labelledby="tasks-title">
+        <div class="tasks-head">
+          <h2 id="tasks-title" class="eyebrow">Tarefas de hoje</h2>
+          <span id="tasks-count" class="muted small"></span>
+        </div>
+        <form id="task-form" class="task-form" autocomplete="off">
+          <label class="sr-only" for="task-input">Nova tarefa</label>
+          <input id="task-input" class="input" maxlength="140" placeholder="O que você quer fazer hoje?" />
+          <button class="btn" type="submit">Adicionar</button>
+        </form>
+        <ul id="task-list" class="task-list"></ul>
+        <button id="clear-done" class="btn btn-ghost small" type="button" hidden>Limpar concluídas</button>
+      </section>
+
+      <footer id="quote-box" class="quote">
+        <p id="quote" class="quote-text"></p>
+        <button id="quote-next" class="btn btn-ghost btn-icon" type="button" title="Outra frase" aria-label="Outra frase">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 1 1-2.64-6.36"/><path d="M21 3v6h-6"/></svg>
+        </button>
+      </footer>
+    </main>
+
+    <script type="module" src="./main.ts"></script>
+  </body>
+</html>

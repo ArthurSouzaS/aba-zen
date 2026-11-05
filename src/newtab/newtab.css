@@ -1,0 +1,228 @@
+body {
+  min-height: 100vh;
+  background:
+    radial-gradient(900px 500px at 50% -10%, rgba(52, 211, 153, 0.07), transparent 70%),
+    var(--bg);
+}
+
+.settings-link {
+  position: fixed;
+  top: 16px;
+  right: 16px;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  grid-template-areas:
+    'hero hero'
+    'focus tasks'
+    'quote quote';
+  gap: 20px;
+  width: min(920px, 100% - 32px);
+  margin: 0 auto;
+  padding: 9vh 0 48px;
+  align-items: start;
+}
+
+.hero {
+  grid-area: hero;
+  text-align: center;
+  margin-bottom: 12px;
+}
+.date {
+  margin: 0;
+  font-size: 15px;
+}
+.clock {
+  margin: 0;
+  font-size: clamp(64px, 12vw, 128px);
+  font-weight: 200;
+  letter-spacing: -0.04em;
+  line-height: 1.05;
+  font-variant-numeric: tabular-nums;
+}
+.greeting {
+  margin: 6px 0 0;
+  font-size: 22px;
+  font-weight: 500;
+}
+.greeting::after {
+  content: '.';
+  color: var(--accent);
+}
+
+.small {
+  font-size: 13px;
+}
+
+/* ------------------------------- Foco ------------------------------- */
+.focus {
+  grid-area: focus;
+}
+.focus-body {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.focus-time {
+  margin: 0;
+  font-family: var(--mono);
+  font-size: 44px;
+  font-weight: 500;
+  line-height: 1.1;
+  font-variant-numeric: tabular-nums;
+}
+.focus-status {
+  margin: 4px 0 0;
+}
+.focus[data-status='running'] .focus-time {
+  color: var(--accent);
+}
+.focus[data-status='paused'] .focus-time {
+  color: var(--warn);
+}
+.focus-actions {
+  display: flex;
+  gap: 8px;
+}
+.progress {
+  height: 4px;
+  margin: 18px 0 12px;
+  border-radius: 999px;
+  background: var(--surface-2);
+  overflow: hidden;
+}
+.progress > span {
+  display: block;
+  width: 0;
+  height: 100%;
+  background: var(--accent);
+  transition: width 0.4s linear;
+}
+.focus[data-status='paused'] .progress > span {
+  background: var(--warn);
+}
+#focus-summary {
+  margin: 0;
+}
+
+/* ------------------------------ Tarefas ----------------------------- */
+.tasks {
+  grid-area: tasks;
+}
+.tasks-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+.task-form {
+  display: flex;
+  gap: 8px;
+}
+.task-list {
+  margin: 12px 0 0;
+  padding: 0;
+  list-style: none;
+  max-height: 320px;
+  overflow-y: auto;
+}
+.task {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 4px;
+  border-bottom: 1px solid var(--border);
+}
+.task:last-child {
+  border-bottom: 0;
+}
+.task label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 1;
+  min-width: 0;
+  cursor: pointer;
+  overflow-wrap: anywhere;
+}
+.task input[type='checkbox'] {
+  appearance: none;
+  flex: none;
+  width: 18px;
+  height: 18px;
+  margin: 0;
+  border: 2px solid var(--faint);
+  border-radius: 6px;
+  cursor: pointer;
+  display: grid;
+  place-content: center;
+}
+.task input[type='checkbox']:checked {
+  border-color: var(--accent);
+  background: var(--accent);
+}
+.task input[type='checkbox']:checked::after {
+  content: '';
+  width: 5px;
+  height: 9px;
+  margin-top: -2px;
+  border: solid #06281c;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+.task.done span {
+  color: var(--faint);
+  text-decoration: line-through;
+}
+.task .remove {
+  opacity: 0;
+}
+.task:hover .remove,
+.task .remove:focus-visible {
+  opacity: 1;
+}
+#clear-done {
+  margin-top: 8px;
+  min-height: 30px;
+  padding: 0 10px;
+}
+
+/* ------------------------------- Frase ------------------------------ */
+.quote {
+  grid-area: quote;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 12px;
+  text-align: center;
+}
+.quote-text {
+  margin: 0;
+  max-width: 640px;
+  font-size: 17px;
+  font-style: italic;
+  color: var(--muted);
+}
+.quote-text::before,
+.quote-text::after {
+  color: var(--accent);
+  font-style: normal;
+}
+.quote-text::before {
+  content: '“';
+}
+.quote-text::after {
+  content: '”';
+}
+
+@media (max-width: 760px) {
+  .layout {
+    grid-template-columns: 1fr;
+    grid-template-areas: 'hero' 'focus' 'tasks' 'quote';
+    padding-top: 64px;
+  }
+}

@@ -1,0 +1,49 @@
+name: Build da extensão
+
+on:
+  push:
+    branches: [main]
+    tags: ['v*']
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    name: Testar e empacotar
+    runs-on: ubuntu-latest
+    steps:
+      - name: Baixar o código
+        uses: actions/checkout@v4
+
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Instalar dependências
+        run: npm ci
+
+      - name: Checar tipos
+        run: npm run typecheck
+
+      - name: Rodar testes
+        run: npm test
+
+      - name: Gerar build e .zip
+        run: npm run zip
+
+      - name: Ler versão
+        id: meta
+        run: echo "version=$(node -p "require('./package.json').version")" >> "$GITHUB_OUTPUT"
+
+      - name: Publicar .zip como artefato
+        uses: actions/upload-artifact@v4
+        with:
+          name: aba-zen-v${{ steps.meta.outputs.version }}
+          path: aba-zen-v${{ steps.meta.outputs.version }}.zip
+          if-no-files-found: error
+          retention-days: 30
